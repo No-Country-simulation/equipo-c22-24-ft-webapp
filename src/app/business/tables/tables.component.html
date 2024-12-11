@@ -1,1 +1,48 @@
-<p>tables works!</p>
+<!-- Encabezado de la sección de clientes -->
+<div class="p-4">
+  <h1 class="text-2xl font-semibold">Clientes</h1>
+  <p class="text-sm text-gray-600">Total de Clientes: {{ clientes.length }}</p>
+</div>
+
+<!-- Tabla con los clientes -->
+<div class="mt-4">
+  <table class="table-auto w-full bg-white shadow-lg rounded-lg border border-gray-300">
+    <thead>
+      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left">Cliente</th>
+        <th class="py-3 px-6 text-left">Correo</th>
+        <th class="py-3 px-6 text-left">Teléfono</th>
+        <th class="py-3 px-6 text-left">Unido desde</th>
+        <th class="py-3 px-6 text-left">Rol</th>
+        <th class="py-3 px-6 text-left">Acción</th> <!-- Nueva columna para ver detalles -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes" class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="py-3 px-6">{{ cliente.name }}</td>
+        <td class="py-3 px-6">{{ cliente.email }}</td>
+        <td class="py-3 px-6">{{ cliente.phone }}</td>
+        <td class="py-3 px-6">{{ cliente.joined }}</td>
+        <td class="py-3 px-6">{{ cliente.role }}</td>
+        <td class="py-3 px-6">
+          <button (click)="selectClient(cliente)" class="text-blue-500 hover:text-blue-700">Ver Detalle</button> <!-- Botón para ver detalles -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal para mostrar detalles del cliente -->
+<div *ngIf="selectedClient" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-semibold mb-4">Detalles del Cliente: {{ selectedClient.name }}</h2>
+    <p><strong>Correo:</strong> {{ selectedClient.email }}</p>
+    <p><strong>Teléfono:</strong> {{ selectedClient.phone }}</p>
+    <p><strong>Unido desde:</strong> {{ selectedClient.joined }}</p>
+    <p><strong>Rol:</strong> {{ selectedClient.role }}</p>
+    <p><strong>Detalles de la PC:</strong> {{ selectedClient.details }}</p>
+    <div class="mt-4 flex justify-end">
+      <button (click)="closeClientDetail()" class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700">Cerrar</button> <!-- Botón para cerrar el modal -->
+    </div>
+  </div>
+</div>

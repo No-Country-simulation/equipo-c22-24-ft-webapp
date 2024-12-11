@@ -1,0 +1,94 @@
+/* Estilos generales */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Estilos para los detalles del cliente */
+div > h2 {
+  color: #333;
+  font-size: 1.5rem;
+}
+
+div > p {
+  color: #555;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #efefef;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d4d4d4;
+}
+
+/* Estilos para el modal */
+.fixed {
+  position: fixed;
+}
+
+.bg-opacity-50 {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.w-96 {
+  width: 24rem;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.rounded-lg {
+  border-radius: 0.75rem;
+}
+
+.shadow-lg {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.text-red-500 {
+  color: #ef4444;
+}
+
+.hover\:bg-red-700:hover {
+  background-color: #c53030;
+}
