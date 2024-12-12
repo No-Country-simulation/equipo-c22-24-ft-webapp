@@ -4,8 +4,6 @@ Flox es un sistema de gestión de tickets que permite crear, modificar y gestion
 Descripción del Proyecto
 Flox es una plataforma para gestionar solicitudes o problemas mediante un sistema de tickets. Los usuarios pueden crear nuevos tickets, modificarlos o actualizar su estado. El sistema es eficiente y está diseñado para facilitar la gestión de incidencias y solicitudes de manera ágil.
 
-<img src= "../ng-menu-dashboard/src/app/img/d1.png" with="50%" height="45%">
-<img src= "../ng-menu-dashboard/src/app/img/d3.png" with="50%" height="45%">
 Características Principales:
 Creación de Tickets: Los usuarios pueden crear tickets mediante un formulario.
 Gestión de Estado de Tickets: Los tickets pueden tener diferentes estados, y se pueden actualizar fácilmente.
