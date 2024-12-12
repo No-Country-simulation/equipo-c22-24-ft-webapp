@@ -10,43 +10,43 @@ import { FormsModule } from '@angular/forms';    // Para formularios
   styleUrls: ['./tables.component.css'],
 })
 export class TablesComponent {
-  // Lista de clientes con correos reales y teléfonos reales, además de roles como 'Cliente'
+  // Lista de clientes con nombres, correos reales (sin @) y teléfonos reales
   clientes = [
     {
-      name: 'HP',
-      email: 'contacto@hp.com',
+      name: 'Carlos Fabián Acosta',
+      email: 'carlosfabianc@example.com',
       phone: '+54123456789',
       joined: '01/01/2022',
       role: 'Cliente',
       details: 'PC HP Pavilion, 16GB RAM, i7-10700K, 512GB SSD',
     },
     {
-      name: 'MERCADOLIBRE',
-      email: 'atencion@mercadolibre.com',
+      name: 'Ana María Rodríguez',
+      email: 'anamaria@example.com',
       phone: '+5491123456789',
       joined: '02/02/2023',
       role: 'Cliente',
       details: 'PC Dell XPS, 32GB RAM, i9-11900K, 1TB SSD',
     },
     {
-      name: 'DISNEYLATAM',
-      email: 'contacto@disneylatam.com',
+      name: 'Luis Javier Pérez',
+      email: 'luisjavier@example.com',
       phone: '+521234567890',
       joined: '03/03/2024',
       role: 'Cliente',
       details: 'PC Lenovo ThinkPad, 8GB RAM, i5-10300U, 256GB SSD',
     },
     {
-      name: 'NIVEA',
-      email: 'soporte@nivea.com',
+      name: 'Marta Jiménez',
+      email: 'martajimenez@example.com',
       phone: '+34123456789',
       joined: '04/04/2024',
       role: 'Cliente',
       details: 'PC ASUS ROG, 16GB RAM, Ryzen 7 5800X, 1TB SSD',
     },
     {
-      name: 'SAMSUNG',
-      email: 'contacto@samsung.com',
+      name: 'Miguel Ángel Rodríguez',
+      email: 'miguelrodriguez@example.com',
       phone: '+56912345678',
       joined: '05/05/2024',
       role: 'Cliente',

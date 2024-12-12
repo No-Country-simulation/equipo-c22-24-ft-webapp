@@ -1,48 +1,90 @@
-<!-- Encabezado de la sección de clientes -->
-<div class="p-4">
-  <h1 class="text-2xl font-semibold">Clientes</h1>
-  <p class="text-sm text-gray-600">Total de Clientes: {{ clientes.length }}</p>
-</div>
+<div class="p-8 max-w-screen-xl mx-auto bg-gray-100">
+  <!-- Encabezado -->
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Gestión de Clientes</h1>
+    <p class="text-lg text-gray-600">Administra fácilmente todos tus clientes y sus detalles</p>
+  </div>
 
-<!-- Tabla con los clientes -->
-<div class="mt-4">
-  <table class="table-auto w-full bg-white shadow-lg rounded-lg border border-gray-300">
-    <thead>
-      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-        <th class="py-3 px-6 text-left">Cliente</th>
-        <th class="py-3 px-6 text-left">Correo</th>
-        <th class="py-3 px-6 text-left">Teléfono</th>
-        <th class="py-3 px-6 text-left">Unido desde</th>
-        <th class="py-3 px-6 text-left">Rol</th>
-        <th class="py-3 px-6 text-left">Acción</th> <!-- Nueva columna para ver detalles -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes" class="border-b border-gray-200 hover:bg-gray-100">
-        <td class="py-3 px-6">{{ cliente.name }}</td>
-        <td class="py-3 px-6">{{ cliente.email }}</td>
-        <td class="py-3 px-6">{{ cliente.phone }}</td>
-        <td class="py-3 px-6">{{ cliente.joined }}</td>
-        <td class="py-3 px-6">{{ cliente.role }}</td>
-        <td class="py-3 px-6">
-          <button (click)="selectClient(cliente)" class="text-blue-500 hover:text-blue-700">Ver Detalle</button> <!-- Botón para ver detalles -->
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <!-- Filtro y Total de clientes -->
+  <div class="flex items-center justify-between mb-6">
+    <div class="flex items-center space-x-4">
+      <label for="search" class="text-gray-700 font-medium">Buscar Cliente:</label>
+      <input id="search" type="text" placeholder="Buscar por nombre o correo" class="py-2 px-4 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-64">
+    </div>
+    <div class="text-gray-600 font-semibold text-lg">Total Clientes: {{ clientes.length }}</div>
+  </div>
 
-<!-- Modal para mostrar detalles del cliente -->
-<div *ngIf="selectedClient" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
-  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-    <h2 class="text-xl font-semibold mb-4">Detalles del Cliente: {{ selectedClient.name }}</h2>
-    <p><strong>Correo:</strong> {{ selectedClient.email }}</p>
-    <p><strong>Teléfono:</strong> {{ selectedClient.phone }}</p>
-    <p><strong>Unido desde:</strong> {{ selectedClient.joined }}</p>
-    <p><strong>Rol:</strong> {{ selectedClient.role }}</p>
-    <p><strong>Detalles de la PC:</strong> {{ selectedClient.details }}</p>
-    <div class="mt-4 flex justify-end">
-      <button (click)="closeClientDetail()" class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-700">Cerrar</button> <!-- Botón para cerrar el modal -->
+  <!-- Tabla de Clientes -->
+  <div class="overflow-x-auto bg-white rounded-lg shadow-lg border border-gray-200">
+    <table class="min-w-full table-auto text-gray-800">
+      <thead class="bg-blue-700 text-white">
+        <tr>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Cliente</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Correo</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Teléfono</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Unido Desde</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Rol</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes" class="border-b hover:bg-gray-50">
+          <td class="py-4 px-4 text-sm">{{ cliente.name }}</td>
+          <td class="py-4 px-4 text-sm">{{ cliente.email }}</td>
+          <td class="py-4 px-4 text-sm">{{ cliente.phone }}</td>
+          <td class="py-4 px-4 text-sm">{{ cliente.joined }}</td>
+          <td class="py-4 px-4 text-sm">{{ cliente.role }}</td>
+          <td class="py-4 px-4 text-sm">
+            <button (click)="selectClient(cliente)" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+              Ver Detalle
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal de Detalles del Cliente -->
+  <div *ngIf="selectedClient" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full space-y-6">
+      <h2 class="text-2xl font-semibold text-gray-800">Detalles del Cliente</h2>
+
+      <div class="space-y-4">
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Nombre:</span>
+          <span>{{ selectedClient.name }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Correo:</span>
+          <span>{{ selectedClient.email }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Teléfono:</span>
+          <span>{{ selectedClient.phone }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Unido Desde:</span>
+          <span>{{ selectedClient.joined }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Rol:</span>
+          <span>{{ selectedClient.role }}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Detalles de la PC:</span>
+          <span>{{ selectedClient.details }}</span>
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-4">
+        <button (click)="closeClientDetail()" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none">
+          Cerrar
+        </button>
+        <button class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none">
+          Editar
+        </button>
+      </div>
     </div>
   </div>
+
 </div>

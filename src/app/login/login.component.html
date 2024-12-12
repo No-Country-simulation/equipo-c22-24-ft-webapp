@@ -1,0 +1,43 @@
+<div class="body">
+
+  <div class="spinner-container" *ngIf="loading">
+    <mat-spinner class="spinner" diameter="50"></mat-spinner>
+  </div>
+
+  <!-- Formulario -->
+  <div class="form-container" *ngIf="!loading">
+    <form [formGroup]="form" (ngSubmit)="ingresar()" class="login">
+
+      <img src="../../../../assets/img/usuario.png" alt="Usuario" width="15%">
+      <h1>Login</h1>
+
+      <!-- Campo Usuario -->
+      <mat-form-field class="ancho">
+        <mat-label>Usuario</mat-label>
+        <input matInput autocomplete="off" type="text" formControlName="usuario">
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">El usuario es requerido.</mat-error>
+        <mat-error *ngIf="form.get('usuario')?.hasError('minlength')">El usuario debe tener al menos 3 caracteres.</mat-error>
+      </mat-form-field>
+
+      <!-- Campo Contraseña -->
+      <mat-form-field class="ancho">
+        <mat-label>Contraseña</mat-label>
+        <input matInput autocomplete="off" type="password" formControlName="password">
+        <mat-error *ngIf="form.get('password')?.hasError('required')">La contraseña es requerida.</mat-error>
+        <mat-error *ngIf="form.get('password')?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</mat-error>
+      </mat-form-field>
+
+      <br>
+
+      <!-- Botón de ingreso -->
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        class="ancho button"
+        [disabled]="form.invalid">
+        Ingresar
+      </button>
+    </form>
+  </div>
+</div>
