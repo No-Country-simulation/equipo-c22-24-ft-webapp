@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para *ngIf y *ngFor
-import { FormsModule } from '@angular/forms'; // Para formularios
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -26,6 +26,48 @@ export class ProfileComponent {
       assigned: 'tecnico2@example.com',
       status: 'Cerrado',
     },
+    {
+      title: 'Error al conectar a la red',
+      description: 'Carlos Díaz',
+      time: '30 minutos',
+      assigned: 'carlosdiaz@example.com',
+      status: 'Abierto',
+    },
+    {
+      title: 'Pantalla negra en laptop',
+      description: 'Ana López',
+      time: '3 horas',
+      assigned: 'analopez@example.com',
+      status: 'Abierto',
+    },
+    {
+      title: 'Instalación de software',
+      description: 'Luis Fernández',
+      time: '1.5 horas',
+      assigned: 'luisfernandez@example.com',
+      status: 'Cerrado',
+    },
+    {
+      title: 'Mantenimiento de servidor',
+      description: 'Sofía Ruiz',
+      time: '4 horas',
+      assigned: 'sofiaruiz@example.com',
+      status: 'Abierto',
+    },
+    {
+      title: 'Actualización de sistema operativo',
+      description: 'Martín Torres',
+      time: '2 horas',
+      assigned: 'martintorres@example.com',
+      status: 'Cerrado',
+    },
+    {
+      title: 'Configuración de red Wi-Fi',
+      description: 'Patricia González',
+      time: '1 hora',
+      assigned: 'patriciagonzalez@example.com',
+      status: 'Abierto',
+    },
   ];
 
   // Formulario de nuevo ticket
@@ -42,13 +84,18 @@ export class ProfileComponent {
 
   // Método para agregar tickets
   addTicket() {
-    if (this.newTicket.title && this.newTicket.description && this.newTicket.assigned) {
+    if (this.isFormValid()) {
       this.tickets.push({ ...this.newTicket });
       this.resetForm();
       this.closeModal();  // Cerrar el modal después de agregar el ticket
     } else {
       alert('Por favor, completa todos los campos obligatorios.');
     }
+  }
+
+  // Verifica si el formulario es válido
+  private isFormValid(): boolean {
+    return !!this.newTicket.title && !!this.newTicket.description && !!this.newTicket.assigned;
   }
 
   // Método para eliminar un ticket

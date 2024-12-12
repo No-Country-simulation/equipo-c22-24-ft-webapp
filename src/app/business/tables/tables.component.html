@@ -24,6 +24,7 @@
           <th class="py-3 px-4 text-left text-sm font-semibold">Teléfono</th>
           <th class="py-3 px-4 text-left text-sm font-semibold">Unido Desde</th>
           <th class="py-3 px-4 text-left text-sm font-semibold">Rol</th>
+          <th class="py-3 px-4 text-left text-sm font-semibold">Calificación de Soporte</th>
           <th class="py-3 px-4 text-left text-sm font-semibold">Acción</th>
         </tr>
       </thead>
@@ -34,6 +35,22 @@
           <td class="py-4 px-4 text-sm">{{ cliente.phone }}</td>
           <td class="py-4 px-4 text-sm">{{ cliente.joined }}</td>
           <td class="py-4 px-4 text-sm">{{ cliente.role }}</td>
+          <td class="py-4 px-4 text-sm">
+            <div class="flex space-x-1">
+              <ng-container *ngFor="let star of stars; let i = index">
+                <button
+                  (click)="rateClient(cliente, i + 1)"
+                  [ngClass]="{
+                    'text-yellow-500': cliente.rating > i,
+                    'text-gray-300': cliente.rating <= i
+                  }"
+                  class="text-xl"
+                >
+                  ★
+                </button>
+              </ng-container>
+            </div>
+          </td>
           <td class="py-4 px-4 text-sm">
             <button (click)="selectClient(cliente)" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
               Ver Detalle
@@ -74,17 +91,29 @@
           <span class="font-medium text-gray-700">Detalles de la PC:</span>
           <span>{{ selectedClient.details }}</span>
         </div>
+        <div class="flex justify-between">
+          <span class="font-medium text-gray-700">Calificación de Soporte:</span>
+          <div class="flex space-x-1">
+            <ng-container *ngFor="let star of stars; let i = index">
+              <span
+                [ngClass]="{
+                  'text-yellow-500': selectedClient.rating > i,
+                  'text-gray-300': selectedClient.rating <= i
+                }"
+                class="text-xl"
+              >
+                ★
+              </span>
+            </ng-container>
+          </div>
+        </div>
       </div>
 
       <div class="flex justify-end space-x-4">
         <button (click)="closeClientDetail()" class="bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none">
           Cerrar
         </button>
-        <button class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none">
-          Editar
-        </button>
       </div>
     </div>
   </div>
-
 </div>

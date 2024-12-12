@@ -1,22 +1,14 @@
 <!-- Botón de "Agregar Ticket" en la parte superior derecha -->
 <div class="p-4 flex justify-end">
-  <button
-    class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-    (click)="openModal()"
-  >
+  <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" (click)="openModal()">
     Agregar Ticket
   </button>
 </div>
 
 <!-- Modal para agregar un ticket -->
-<div
-  *ngIf="isModalOpen"
-  class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50"
->
-  <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full sm:w-1/2">
     <h2 class="text-xl font-semibold mb-4">Agregar Ticket</h2>
-
-    <!-- Formulario para agregar un ticket -->
     <form (ngSubmit)="addTicket()">
       <div>
         <label class="block text-sm font-medium">Título</label>
@@ -62,19 +54,10 @@
         />
       </div>
       <div class="flex justify-end space-x-4 mt-4">
-        <!-- Botón para cancelar (cerrar el modal) -->
-        <button
-          type="button"
-          (click)="closeModal()"
-          class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400"
-        >
+        <button type="button" (click)="closeModal()" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-400">
           Cancelar
         </button>
-        <!-- Botón para agregar el ticket -->
-        <button
-          type="submit"
-          class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-        >
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
           Agregar Ticket
         </button>
       </div>
@@ -95,10 +78,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr
-        *ngFor="let ticket of tickets; let i = index"
-        class="border-b border-gray-200 hover:bg-gray-100"
-      >
+      <tr *ngFor="let ticket of tickets; let i = index" class="border-b border-gray-200 hover:bg-gray-100">
         <td class="py-3 px-6">
           <strong>{{ ticket.title }}</strong>
           <p>{{ ticket.description }}</p>
@@ -106,31 +86,22 @@
         </td>
         <td class="py-3 px-6">{{ ticket.assigned }}</td>
         <td class="py-3 px-6 text-center">
-          <span
-            class="bg-green-500 text-white px-4 py-1 rounded-lg"
-            *ngIf="ticket.status === 'Abierto'"
-          >
+          <span class="bg-green-500 text-white px-4 py-1 rounded-lg" *ngIf="ticket.status === 'Abierto'">
             {{ ticket.status }}
           </span>
-          <span
-            class="bg-red-500 text-white px-4 py-1 rounded-lg"
-            *ngIf="ticket.status === 'Cerrado'"
-          >
+          <span class="bg-red-500 text-white px-4 py-1 rounded-lg" *ngIf="ticket.status === 'Cerrado'">
             {{ ticket.status }}
           </span>
         </td>
         <td class="py-3 px-6 text-center">
-          <!-- Botón para cambiar el estado del ticket -->
           <button
-            class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 ml-5"
             (click)="toggleStatus(ticket)"
           >
             Cambiar Estado
           </button>
-
-          <!-- Botón para eliminar el ticket -->
           <button
-            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 ml-5"
             (click)="deleteTicket(i)"
           >
             Eliminar
